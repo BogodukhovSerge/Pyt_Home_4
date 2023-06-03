@@ -13,19 +13,15 @@
 # заданной во входном файле грядки.
 
 n = int(input('Введите количество грядок: '))
-if n < 3: print('Грядок должно быть больше двух')
-else:
-    arr = []
-    for i in range(n):
-        arr.append(int(input('Введите количество ягод: ')))
-
-    first_num = arr[0] + arr[1] + arr[n-1]
-    last_num = arr[0] + arr[n-2] + arr[n-1]
+array = [int(i) for i in input().split()][:n]
+for i in range(1, len(array) - 1):
+    first_num = array[0] + array[1] + array[n-1]
+    last_num = array[0] + array[n-2] + array[n-1]
     max_num = 0
-    if first_num > last_num:
-        max_num = first_num
-    else: max_num = last_num    
-    for i in range(1, n-1):
-        if max_num < arr[i] + arr[i-1] + arr[i+1]:
-            max_num = arr[i] + arr[i-1] + arr[i+1]
-    print(max_num)
+if first_num > last_num:
+    max_num = first_num
+else: max_num = last_num    
+for i in range(1, n-1):
+    if max_num < array[i] + array[i-1] + array[i+1]:
+        max_num = array[i] + array[i-1] + array[i+1]
+print(max_num)
